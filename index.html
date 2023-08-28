@@ -85,7 +85,7 @@
               <heading>Research</heading>
               <p>
                 I have a broad interest in computer vision and machine learning. My current research mainly focuses on video representation learning with limited labels (self/semi-supervised learning), action recognition, and privacy preservation in video understanding tasks. I have also worked on various robotics-related vision tasks like event-camera-based action recognition and drone-to-drone detections from videos. 
-                Below is a selected list of my works.
+                Below is a selected list of my works (in chronological order).
               </p>
             </td>
           </tr>
@@ -93,6 +93,51 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:middle">
+		<div class="one">
+		    <img src='images/tedspad_iccv2023.png' width="180">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:middle">
+		<a href="LINK_TO_PAPER">
+		    <papertitle>TeD-SPAD: Temporal Distinctiveness for Self-supervised Privacy-preservation for Video Anomaly Detection</papertitle>
+		</a>
+		<br>
+		Joseph Fioresi, 
+		<strong>Ishan Rajendrakumar Dave</strong>, 
+		Mubarak Shah.
+		<br>
+		<em>Proceedings of the IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
+		<br>
+		<a href="https://arxiv.org/pdf/2308.11072.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/UCF-CRCV/TeD-SPAD">code</a>
+	    </td>
+	</tr>
+
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:middle">
+	        <div class="one">
+	            <img src='images/eventtransact_iros2023.png' width="180">
+	        </div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:middle">
+	        <a href="LINK_TO_PAPER">
+	            <papertitle>EventTransAct: A Video Transformer-based Framework for Event-camera Based Action Recognition</papertitle>
+	        </a>
+	        <br>
+	        Tristan de Blegiers, 
+	        <strong>Ishan Rajendrakumar Dave</strong>, 
+	        Adeel Yousaf, 
+	        Mubarak Shah.
+	        <br>
+	        <em>2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (<strong>IROS</strong>)</em>, 2023
+	        <br>
+	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="https://github.com/tristandb8/EventTransAct">code</a>
+	    </td>
+	</tr>
+
+		
+		
           <tr onmouseout="mira_stop()" onmouseover="mira_start()">
 	    <td style="padding:20px;width:25%;vertical-align:middle">
 	        <div class="one">
@@ -100,7 +145,7 @@
 	        </div>
 	    </td>
 	    <td style="padding:20px;width:75%;vertical-align:middle">
-        <a href="LINK_TO_PAPER">
+        <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Dave_TimeBalance_Temporally-Invariant_and_Temporally-Distinctive_Video_Representations_for_Semi-Supervised_Action_Recognition_CVPR_2023_paper.pdf">
             <papertitle>TimeBalance: Temporally-Invariant and Temporally-Distinctive Video Representations for Semi-Supervised Action Recognition</papertitle>
         </a>
         <br>
@@ -109,9 +154,9 @@
         Chen Chen, 
         Mubarak Shah.
         <br>
-        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2023
+        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2023
         <br>
-        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="LINK_TO_CODE">code</a>
+        <a href="https://arxiv.org/pdf/2303.16268.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/TimeBalance">code</a>
    	<p></p>
 	<p>
 		We propose a student-teacher semi-supervised learning framework, where we distill knowledge from a temporally-invariant and temporally-distinctive teacher. Depending on the nature of the unlabeled video, we dynamically combine the knowledge of these two teachers based on a novel temporal similarity-based reweighting scheme. State-of-the-art results on Kinetics400, UCF101, HMDB51.
@@ -127,18 +172,22 @@
 	        </div>
 	    </td>
 	    <td style="padding:20px;width:75%;vertical-align:middle">
-	        <a href="LINK_TO_PAPER">
+	        <a href="https://ieeexplore.ieee.org/document/10161433">
 	            <papertitle>Transvisdrone: Spatio-temporal Transformer for Vision-based Drone-to-drone Detection in Aerial Videos</papertitle>
 	        </a>
 	        <br>
 	        Tushar Sangam, 
-	        </strong>,Ishan Rajendrakumar Dave</strong>,, 
+	        </strong>Ishan Rajendrakumar Dave</strong>,
 	        Waqas Sultani, 
 	        Mubarak Shah.
 	        <br>
-	        <em>2023 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2023
+	        <em>2023 IEEE International Conference on Robotics and Automation (<strong>ICRA</strong>)</em>, 2023
 	        <br>
-	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="LINK_TO_CODE">code</a>
+	        <a href="https://arxiv.org/pdf/2210.08423.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/tusharsangam/TransVisDrone">code</a>
+			<p></p>
+			<p>
+			    We propose a simple yet effective framework, TransVisDrone, that provides an end-to-end solution with higher computational efficiency. We utilize CSPDarkNet-53 network to learn object-related spatial features and VideoSwin model to improve drone detection in challenging scenarios by learning spatio-temporal dependencies of drone motion.
+			</p>
 	    </td>
 	</tr>
 
@@ -151,7 +200,7 @@
 	        </div>
 	    </td>
 	    <td style="padding:20px;width:75%;vertical-align:middle">
-	        <a href="LINK_TO_PAPER">
+	        <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Dave_SPAct_Self-Supervised_Privacy_Preservation_for_Action_Recognition_CVPR_2022_paper.html">
 	            <papertitle>SPAct: Self-supervised Privacy Preservation for Action Recognition</papertitle>
 	        </a>
 	        <br>
@@ -159,9 +208,13 @@
 	        Chen Chen, 
 	        Mubarak Shah.
 	        <br>
-	        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2022
+	        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2022
 	        <br>
-	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="LINK_TO_CODE">code</a>
+	        <a href="https://arxiv.org/pdf/2203.15205.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/SPAct">code</a>
+		    <p></p>
+			<p>
+			    For the first time, we present a novel training framework that removes privacy information from input video in a self-supervised manner without requiring privacy labels. We train our framework using a minimax optimization strategy to minimize the action recognition cost function and maximize the privacy cost function through a contrastive self-supervised loss. 
+			</p>
 	    </td>
 	</tr>
 
@@ -215,7 +268,7 @@
 	        </div>
 	    </td>
 	    <td style="padding:20px;width:75%;vertical-align:middle">
-	        <a href="LINK_TO_PAPER">
+	        <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf">
 	            <papertitle>Gabriellav2: Towards Better Generalization in Surveillance Videos for Action Detection</papertitle>
 	        </a>
 	        <br>
@@ -226,9 +279,14 @@
 	        Yogesh Singh Rawat, 
 	        Mubarak Shah.
 	        <br>
-	        <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</em>, 2022
+	        <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (<strong>WACV</strong>)</em>, 2022
 	        <br>
-	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="LINK_TO_CODE">code</a>
+	        <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf">paper</a>
+	        <p></p>
+	        <p>
+	            We propose a realtime, online, action detection system which can generalize robustly on any unknown facility surveillance videos. We tackle the
+challenging nature of action classification problem in various aspects like handling the class-imbalance training using PLM method and learning multi-label action correlations using LSEP loss. In order to improve the computational efficiency of the system, we utilize knowledge distillation.
+	        </p>
 	    </td>
 	</tr>	
 	
