@@ -75,6 +75,74 @@
         padding-top: 80px;
       }
     }
+    
+    /* Collapsible description styles */
+    .paper-description {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .paper-description.expanded {
+      max-height: 500px;
+      transition: max-height 0.4s ease-in;
+    }
+    
+    .toggle-description {
+      color: #0066cc;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    
+    .toggle-description:hover {
+      text-decoration: underline;
+    }
+    
+    /* Collapsible year dividers for updates */
+    .year-divider {
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      padding-left: 0px;
+      border-left: 3px solid #0066cc;
+      padding-left: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .year-divider:hover {
+      color: #0066cc;
+    }
+    
+    .year-divider::before {
+      content: '▼ ';
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 12px;
+      margin-right: 5px;
+    }
+    
+    .year-divider.collapsed::before {
+      transform: rotate(-90deg);
+    }
+    
+    .year-updates {
+      max-height: 1000px;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+      opacity: 1;
+    }
+    
+    .year-updates.collapsed {
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+    }
   </style>
   
   <!-- Active Section Highlighting Script -->
@@ -127,6 +195,30 @@
     });
   </script>
   
+  <!-- Description Toggle Script -->
+  <script>
+    function toggleDescription(id) {
+      const desc = document.getElementById(id);
+      const toggle = document.getElementById('toggle-' + id);
+      
+      if (desc.classList.contains('expanded')) {
+        desc.classList.remove('expanded');
+        toggle.textContent = '[show abstract]';
+      } else {
+        desc.classList.add('expanded');
+        toggle.textContent = '[hide abstract]';
+      }
+    }
+    
+    function toggleYear(year) {
+      const header = document.getElementById('year-header-' + year);
+      const content = document.getElementById('year-content-' + year);
+      
+      header.classList.toggle('collapsed');
+      content.classList.toggle('collapsed');
+    }
+  </script>
+  
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4HH3XJ50W"></script>
   <script>
@@ -171,13 +263,27 @@
 			
               </p>
               <p style="text-align:center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" style="width:20px;height:20px;vertical-align:middle;margin-right:5px;">
                 Email: ishandave95(a)gmail.com
               </p>
               <p style="text-align:center">
-                <a href="https://scholar.google.com/citations?hl=en&user=fWu6sFgAAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://github.com/daveishan">Github</a> &nbsp/&nbsp
-                <a href="https://www.linkedin.com/in/ishan-dave-crcv/">LinkedIn</a> &nbsp/&nbsp
-                <a href="data/CVpublic_21Aug2024_Dave.pdf">CV (it's a public version, for a detailed version feel free to ask!)</a>
+                <a href="https://scholar.google.com/citations?hl=en&user=fWu6sFgAAAAJ&view_op=list_works&sortby=pubdate">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" alt="Google Scholar" style="width:20px;height:20px;vertical-align:middle;margin-right:5px;">Google Scholar
+                </a> &nbsp/&nbsp
+                <a href="https://github.com/daveishan">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Github" style="width:20px;height:20px;vertical-align:middle;margin-right:5px;">Github
+                </a> &nbsp/&nbsp
+                <a href="https://www.linkedin.com/in/ishan-dave-crcv/">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width:20px;height:20px;vertical-align:middle;margin-right:5px;">LinkedIn
+                </a>
+              </p>
+              <p style="text-align:center;margin-top:10px;">
+                <a href="data/CVpublic_Ishan_17Dec2025.pdf">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="CV" style="width:20px;height:20px;vertical-align:middle;margin-right:5px;">CV
+                </a>
+                <span style="font-size:11px;color:#888;"> (public version, for more details feel free to ask!)</span>
+                <br>
+                <span style="font-size:11px;color:#999;">Last updated: Dec 17, 2025</span>
               </p>
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
@@ -193,30 +299,48 @@
                 <td style="padding:20px;width:100%;vertical-align:middle">
 <!--                   <h2>Updates <strong><font color="red">Looking for fulltime jobs!</font></strong> </h2> -->
 		  <h2>Updates</h2>
-		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'25:</span> My led work "Generative Upscaler" is shipped as the default upscaler in the Photoshop<br>
-		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Sep'25:</span> A paper "Finegrained Video Retrieval" accepted at <strong>NeurIPS 2025</strong><br>
-		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'25:</span> A paper "GT-Loc" accepted at <strong>ICCV 2025</strong>: <font color="red">Oral presentation! (Top 0.5% papers)</font><br>
-		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Apr'25:</span> A paper "ALBAR" accepted at <strong>ICLR 2025</strong><br>
-
-		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'25:</span> Started full-time at Adobe Firefly, Seattle, WA <br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'24:</span> Successfully defended my Ph.D dissertation! <br>
-                    	  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Aug'24:</span> SPAct Patent Approved! my first patent as the primary inventor 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'24:</span> <strong>2 First author papers</strong> accepted at <strong>ECCV 2024</strong>: <font color="red">Oral presentation! (Top 3% papers)</font>💥💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'24:</span> Selected as Outstanding Reviewer of CVPR 2024! (top 2% among 10,000 reviewers)🥇<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'24:</span> Started internship at Apple, Cupertino, CA<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Dec'23:</span> A <strong>First author paper</strong> "No More Shortcuts" accepted to <strong>AAAI 2024</strong> 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'23:</span> A <strong>First author paper</strong> "Event-TransAct" accepted at IROS 2023 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'23:</span> A paper "TeD-SPAD" accepted at ICCV 2023<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'23:</span> Started summer internship at Adobe, San Jose, CA<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'23:</span> A <strong>First author paper</strong> "TimeBalance" accepted to <strong>CVPR 2023</strong> 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'23:</span> A paper "TransVisDrone" accepted at ICRA 2023<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'22:</span> Started summer internship at Adobe, USA (remote- Florida)<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'22:</span> A <strong>First author paper</strong> "TCLR" accepted to CVIU 2022 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'22:</span> A <strong>First author paper</strong> "SPAct" accepted to <strong>CVPR 2022</strong> 💥<br>
-			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'21:</span> Our Gabriella paper has been awarded the best scientific paper award at ICPR 2020<br>
+		  
+		  <div class="year-divider" id="year-header-2025" onclick="toggleYear('2025')">2025</div>
+		  <div class="year-updates" id="year-content-2025">
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'25:</span> My led work "Generative Upscaler" is shipped as the default upscaler in the Photoshop<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Sep'25:</span> A paper "Finegrained Video Retrieval" accepted at <strong>NeurIPS 2025</strong><br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'25:</span> A paper "GT-Loc" accepted at <strong>ICCV 2025</strong>: <font color="red">Oral presentation! (Top 0.5% papers)</font><br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Apr'25:</span> A paper "ALBAR" accepted at <strong>ICLR 2025</strong><br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'25:</span> Started full-time at Adobe Firefly, Seattle, WA<br>
+		  </div>
+		  
+		  <div class="year-divider" id="year-header-2024" onclick="toggleYear('2024')">2024</div>
+		  <div class="year-updates" id="year-content-2024">
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'24:</span> Successfully defended my Ph.D dissertation! <br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Aug'24:</span> SPAct Patent Approved! my first patent as the primary inventor 💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'24:</span> <strong>2 First author papers</strong> accepted at <strong>ECCV 2024</strong>: <font color="red">Oral presentation! (Top 3% papers)</font>💥💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'24:</span> Selected as Outstanding Reviewer of CVPR 2024! (top 2% among 10,000 reviewers)🥇<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'24:</span> Started internship at Apple, Cupertino, CA<br>
+		  </div>
+		  
+		  <div class="year-divider" id="year-header-2023" onclick="toggleYear('2023')">2023</div>
+		  <div class="year-updates" id="year-content-2023">
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Dec'23:</span> A <strong>First author paper</strong> "No More Shortcuts" accepted to <strong>AAAI 2024</strong> 💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'23:</span> A <strong>First author paper</strong> "Event-TransAct" accepted at IROS 2023 💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jul'23:</span> A paper "TeD-SPAD" accepted at ICCV 2023<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'23:</span> Started summer internship at Adobe, San Jose, CA<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'23:</span> A <strong>First author paper</strong> "TimeBalance" accepted to <strong>CVPR 2023</strong> 💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'23:</span> A paper "TransVisDrone" accepted at ICRA 2023<br>
+		  </div>
+		  
+		  <div class="year-divider" id="year-header-2022" onclick="toggleYear('2022')">2022</div>
+		  <div class="year-updates" id="year-content-2022">
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> May'22:</span> Started summer internship at Adobe, USA (remote- Florida)<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'22:</span> A <strong>First author paper</strong> "TCLR" accepted to CVIU 2022 💥<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Mar'22:</span> A <strong>First author paper</strong> "SPAct" accepted to <strong>CVPR 2022</strong> 💥<br>
+		  </div>
+		  
+		  <div class="year-divider" id="year-header-2021" onclick="toggleYear('2021')">2021 & Earlier</div>
+		  <div class="year-updates" id="year-content-2021">
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'21:</span> Our Gabriella paper has been awarded the best scientific paper award at ICPR 2020<br>
+		  </div>
 <!--                     &nbsp <i class="fa fa-share-alt" style="font-size:12px"></i> June 2020: Placed first at ActEV SDL Challenge (ActivityNet workshop at CVPR 2020) 🥇<br>
                     &nbsp <i class="fa fa-share-alt" style="font-size:12px"></i> October 2019: Placed second at the TRECVID leaderboard 🥇<br> -->
-                  </p>
                 </td>
               </tr>
             </tbody>
@@ -332,12 +456,12 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 		<div class="one">
 		    <img src='images/avr_eccv2024.png' width="180">
 		</div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 		<a href="https://www.crcv.ucf.edu/wp-content/uploads/2018/11/avr_eccv24_dave.pdf">
 		    <papertitle>Sync from the Sea: Retrieving Alignable Videos from Large-Scale Datasets</papertitle>
 		</a>
@@ -351,22 +475,23 @@
 		<br>
 	       <em><strong><font color="red">Oral presentation! (Top 3% of accepted papers)</font></strong></em>
 		<br>
-		<a href="https://daveishan.github.io/avr-webpage/">project page</a> 
-		<p></p>
+		<a href="https://daveishan.github.io/avr-webpage/">project page</a>
+		/ <a class="toggle-description" id="toggle-desc1" onclick="toggleDescription('desc1')">[show abstract]</a>
+		<div id="desc1" class="paper-description">
 		<p>
 			Temporal video alignment synchronizes key events like object interactions or action phase transitions in two videos, benefiting video editing, processing, and understanding tasks. Existing methods assume a given video pair, limiting applicability. We redefine this as a search problem, introducing Alignable Video Retrieval (AVR), which identifies and synchronizes well-alignable videos from a large collection. Key contributions include DRAQ, a video alignability indicator, and a generalizable frame-level video feature design.
-
 		</p>
+		</div>
 	     </td>
 	</tr>
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">	
-		<td style="padding:20px;width:25%;vertical-align:middle">
+		<td style="padding:20px;width:25%;vertical-align:top">
 			        <div class="one">
 			            <img src='images/finepsuedo_eccv2024.png' width="180">
 			        </div>
 			    </td>
-			    <td style="padding:20px;width:75%;vertical-align:middle">
+			    <td style="padding:20px;width:75%;vertical-align:top">
 		        <a href="https://www.crcv.ucf.edu/wp-content/uploads/2018/11/finepsuedo_eccv24_dave.pdf">
 		            <papertitle>FinePseudo: Improving Pseudo-Labelling through Temporal-Alignablity for Semi-Supervised Fine-Grained Action Recognition</papertitle>
 		        </a>
@@ -377,23 +502,25 @@
 		        <br>
 		        <em>The 18th European Conference on Computer Vision (<strong>ECCV</strong>) </em>, 2024
 		        <br>
-			<a href="https://daveishan.github.io/finepsuedo-webpage/">project page</a> 
-		   	<p></p>
+			<a href="https://daveishan.github.io/finepsuedo-webpage/">project page</a>
+			/ <a class="toggle-description" id="toggle-desc2" onclick="toggleDescription('desc2')">[show abstract]</a>
+			<div id="desc2" class="paper-description">
 			<p>
 				We introduce Alignability-Verification-based Metric learning for semi-supervised fine-grained action recognition. Using dynamic time warping (DTW) for action-phase-aware comparison, our learnable alignability score refines pseudo-labels of the video encoder. Our framework, FinePseudo, outperforms prior methods on fine-grained action recognition datasets. Additionally, it demonstrates robustness in handling novel unlabeled classes in open-world setups.
 			</p>
+			</div>
 		    	</td>
 	</tr>
 
 		
 <!-- 	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0"> -->
 		
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/codamal_icip2024.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
         <a href="https://arxiv.org/pdf/2312.13008.pdf">
             <papertitle>CodaMal: Contrastive Domain Adaptation for Malaria Detection in Low-Cost Microscopes</papertitle>
         </a>
@@ -407,13 +534,13 @@
         <br>
         <em><strong><font color="red">Oral presentation! </font></strong></em>
 	<br>
-        <br>
 	<a href="https://daveishan.github.io/codamal-webpage/">project page</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/CodaMal">code</a>
-   	<p></p>
+	/ <a class="toggle-description" id="toggle-desc3" onclick="toggleDescription('desc3')">[show abstract]</a>
+	<div id="desc3" class="paper-description">
 	<p>
 		We propose a Domain Adaptive Contrastive objective to bridge the gap between High and Low Cost Microscopes. On the publicly available large-scale M5 dataset, our proposed method shows a significant improvement of 16% over the state-of-the-art methods in terms of the mean average precision metric (mAP), provides a 21× speed-up during inference, and requires only half as many learnable parameters as the prior methods.
-
 	</p>
+	</div>
     	</td>
 <!-- 	</tr> -->
 
@@ -421,12 +548,12 @@
 
 		
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/nms_aaai2024.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
         <a href="https://arxiv.org/pdf/2312.13008.pdf">
             <papertitle>No More Shortcuts: Realizing the Potential of Temporal Self-Supervision</papertitle>
         </a>
@@ -438,21 +565,23 @@
         <em>AAAI Conference on Artificial Intelligence, Main Technical Track (<strong>AAAI</strong>) </em>, 2024
         <br>
 	<a href="https://daveishan.github.io/nms-webpage/">project page</a>
-   	<p></p>
+	/ <a class="toggle-description" id="toggle-desc4" onclick="toggleDescription('desc4')">[show abstract]</a>
+	<div id="desc4" class="paper-description">
 	<p>
 		We demonstrate experimentally that our more challenging frame-level task formulations and the removal of shortcuts drastically improve the quality of features learned through temporal self-supervision. Our extensive experiments show state-of-the-art performance across 10 video understanding datasets, illustrating the generalization ability and robustness of our learned video representations.
 	</p>
+	</div>
     	</td>
 	</tr>
 		
 		
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 		<div class="one">
 		    <img src='images/tedspad_iccv2023.png' width="180">
 		</div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 		<a href="LINK_TO_PAPER">
 		    <papertitle>TeD-SPAD: Temporal Distinctiveness for Self-supervised Privacy-preservation for Video Anomaly Detection</papertitle>
 		</a>
@@ -464,20 +593,22 @@
 		<em>Proceedings of the IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
 		<br>
 		<a href="https://arxiv.org/pdf/2308.11072.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/UCF-CRCV/TeD-SPAD">code</a> &nbsp/&nbsp <a href="https://joefioresi718.github.io/TeD-SPAD_webpage/">project page</a>
-		    <p></p>
-			<p>
-			    We propose TeD-SPAD, a privacy-aware video anomaly detection framework that destroys visual private information in a self-supervised manner. In particular, we propose the use of a temporally-distinct triplet loss to promote temporally discriminative features, which complements current weakly-supervised VAD methods.
-			</p>
+		/ <a class="toggle-description" id="toggle-desc5" onclick="toggleDescription('desc5')">[show abstract]</a>
+		<div id="desc5" class="paper-description">
+		<p>
+		    We propose TeD-SPAD, a privacy-aware video anomaly detection framework that destroys visual private information in a self-supervised manner. In particular, we propose the use of a temporally-distinct triplet loss to promote temporally discriminative features, which complements current weakly-supervised VAD methods.
+		</p>
+		</div>
 	    </td>
 	</tr>
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/eventtransact_iros2023.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="LINK_TO_PAPER">
 	            <papertitle>EventTransAct: A Video Transformer-based Framework for Event-camera Based Action Recognition</papertitle>
 	        </a>
@@ -492,22 +623,24 @@
 	        <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (<strong>IROS</strong>)</em>, 2023
 	        <br>
 	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="https://github.com/tristandb8/EventTransAct">code</a> &nbsp/&nbsp <a href="https://joefioresi718.github.io/TeD-SPAD_webpage/">project page</a>
-	    	<p></p>
+		/ <a class="toggle-description" id="toggle-desc6" onclick="toggleDescription('desc6')">[show abstract]</a>
+		<div id="desc6" class="paper-description">
 		<p>
 		   We propose a video transformer-based framework for event-camera based action recognition, which leverages event-contrastive loss and augmentations to adapt the network to event data. Our method achieved state-of-the-art results on N-EPIC Kitchens dataset and competitive results on the standard DVS Gesture recognition dataset, while requiring less computation time compared to competitive prior approaches. 
 		</p>
+		</div>
 	    </td>
 	</tr>
 
 		
 		
           <tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/timebalance_cvpr2023.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
         <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Dave_TimeBalance_Temporally-Invariant_and_Temporally-Distinctive_Video_Representations_for_Semi-Supervised_Action_Recognition_CVPR_2023_paper.pdf">
             <papertitle>TimeBalance: Temporally-Invariant and Temporally-Distinctive Video Representations for Semi-Supervised Action Recognition</papertitle>
         </a>
@@ -520,21 +653,22 @@
         <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2023
         <br>
         <a href="https://arxiv.org/pdf/2303.16268.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/TimeBalance">code</a> &nbsp/&nbsp <a href="https://daveishan.github.io/timebalance_webpage/">project page</a>
-   	<p></p>
+	/ <a class="toggle-description" id="toggle-desc7" onclick="toggleDescription('desc7')">[show abstract]</a>
+	<div id="desc7" class="paper-description">
 	<p>
 		We propose a student-teacher semi-supervised learning framework, where we distill knowledge from a temporally-invariant and temporally-distinctive teacher. Depending on the nature of the unlabeled video, we dynamically combine the knowledge of these two teachers based on a novel temporal similarity-based reweighting scheme. State-of-the-art results on Kinetics400, UCF101, HMDB51.
-
 	</p>
+	</div>
     	</td>
 	</tr>
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/transvisdrone_icra23.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="https://ieeexplore.ieee.org/document/10161433">
 	            <papertitle>Transvisdrone: Spatio-temporal Transformer for Vision-based Drone-to-drone Detection in Aerial Videos</papertitle>
 	        </a>
@@ -547,22 +681,24 @@
 	        <em>2023 IEEE International Conference on Robotics and Automation (<strong>ICRA</strong>)</em>, 2023
 	        <br>
 	        <a href="https://arxiv.org/pdf/2210.08423.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/tusharsangam/TransVisDrone">code</a> &nbsp/&nbsp <a href="https://tusharsangam.github.io/TransVisDrone-project-page/">project page</a>
-			<p></p>
-			<p>
-			    We propose a simple yet effective framework, TransVisDrone, that provides an end-to-end solution with higher computational efficiency. We utilize CSPDarkNet-53 network to learn object-related spatial features and VideoSwin model to improve drone detection in challenging scenarios by learning spatio-temporal dependencies of drone motion.
-			</p>
+		/ <a class="toggle-description" id="toggle-desc8" onclick="toggleDescription('desc8')">[show abstract]</a>
+		<div id="desc8" class="paper-description">
+		<p>
+		    We propose a simple yet effective framework, TransVisDrone, that provides an end-to-end solution with higher computational efficiency. We utilize CSPDarkNet-53 network to learn object-related spatial features and VideoSwin model to improve drone detection in challenging scenarios by learning spatio-temporal dependencies of drone motion.
+		</p>
+		</div>
 	    </td>
 	</tr>
 
 	
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/spact_cvpr2022.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Dave_SPAct_Self-Supervised_Privacy_Preservation_for_Action_Recognition_CVPR_2022_paper.html">
 	            <papertitle>SPAct: Self-supervised Privacy Preservation for Action Recognition</papertitle>
 	        </a>
@@ -574,10 +710,12 @@
 	        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2022
 	        <br>
 	        <a href="https://arxiv.org/pdf/2203.15205.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/SPAct">code</a>
-		    <p></p>
-			<p>
-			    For the first time, we present a novel training framework that removes privacy information from input video in a self-supervised manner without requiring privacy labels. We train our framework using a minimax optimization strategy to minimize the action recognition cost function and maximize the privacy cost function through a contrastive self-supervised loss. 
-			</p>
+		/ <a class="toggle-description" id="toggle-desc9" onclick="toggleDescription('desc9')">[show abstract]</a>
+		<div id="desc9" class="paper-description">
+		<p>
+		    For the first time, we present a novel training framework that removes privacy information from input video in a self-supervised manner without requiring privacy labels. We train our framework using a minimax optimization strategy to minimize the action recognition cost function and maximize the privacy cost function through a contrastive self-supervised loss. 
+		</p>
+		</div>
 	    </td>
 	</tr>
 
@@ -586,7 +724,7 @@
 	
 		
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">
-	    <td style="padding:5px;width:25%;vertical-align:middle">
+	    <td style="padding:5px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/tclr_cviu2022.png' width="180">
 	        </div>
@@ -601,7 +739,7 @@
 	            mira_stop()
 	        </script>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="https://www.sciencedirect.com/science/article/pii/S1077314222000376">
 	            <papertitle>TCLR: Temporal Contrastive Learning for Video Representation</papertitle>
 	        </a>
@@ -617,20 +755,22 @@
                <br>
 	        <a href="https://arxiv.org/pdf/2101.07974.pdf">paper</a> &nbsp/&nbsp
 	        <a href="https://github.com/DAVEISHAN/TCLR">code</a>
-	        <p></p>
+		/ <a class="toggle-description" id="toggle-desc10" onclick="toggleDescription('desc10')">[show abstract]</a>
+		<div id="desc10" class="paper-description">
 	        <p>
 	            We propose a new temporal contrastive learning framework for self-supervised video representation learning, consisting of two novel losses that aim to increase the temporal diversity of learned features. The framework achieves state-of-the-art results on various downstream video understanding tasks, including significant improvement in fine-grained action classification for visually similar classes.
 	        </p>
+		</div>
 	    </td>
 	</tr>
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/gabriellav2_wacv22.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf">
 	            <papertitle>Gabriellav2: Towards Better Generalization in Surveillance Videos for Action Detection</papertitle>
 	        </a>
@@ -645,20 +785,22 @@
 	        <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (<strong>WACV</strong>)</em>, 2022
 	        <br>
 	        <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf">paper</a>
-	        <p></p>
+		/ <a class="toggle-description" id="toggle-desc11" onclick="toggleDescription('desc11')">[show abstract]</a>
+		<div id="desc11" class="paper-description">
 	        <p>
 	            We propose a realtime, online, action detection system which can generalize robustly on any unknown facility surveillance videos. We tackle the
 challenging nature of action classification problem in various aspects like handling the class-imbalance training using PLM method and learning multi-label action correlations using LSEP loss. In order to improve the computational efficiency of the system, we utilize knowledge distillation.
 	        </p>
+		</div>
 	    </td>
 	</tr>	
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 	        <div class="one">
 	            <img src='images/gabriella_icpr2020.png' width="180">
 	        </div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
+	    <td style="padding:20px;width:75%;vertical-align:top">
 	        <a href="https://ieeexplore.ieee.org/document/9412791">
 	            <papertitle>Gabriella: An Online System for Real-Time Activity Detection in Untrimmed Security Videos</papertitle>
 	        </a>
@@ -674,11 +816,13 @@ challenging nature of action classification problem in various aspects like hand
 	        <br>
 	        <em>25th International Conference on Pattern Recognition (<strong>ICPR</strong>)</em>, 2021 <em><strong><font color="red">(Best Paper Award)</font></strong></em>
 	        <br>
-	        <a href="https://arxiv.org/abs/2004.11475">paper</a> 
-		<p></p>
+	        <a href="https://arxiv.org/abs/2004.11475">paper</a>
+		/ <a class="toggle-description" id="toggle-desc12" onclick="toggleDescription('desc12')">[show abstract]</a>
+		<div id="desc12" class="paper-description">
 	        <p>
 	            Gabriella consists of three stages: tubelet extraction, activity classification, and online tubelet merging. Gabriella utilizes a localization network for tubelet extraction, with a novel Patch-Dice loss to handle variations in actor size, and a Tubelet-Merge Action-Split (TMAS) algorithm to detect activities efficiently and robustly.
-	        </p>    
+	        </p>
+		</div>    
 	    </td>
 	</tr>
 
