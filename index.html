@@ -10,19 +10,163 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
 
 	<!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>"> -->
+  
+  <!-- Sticky Navigation Styles -->
+  <style>
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 12px 0;
+    }
+    
+    .navbar-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+    
+    .navbar a {
+      color: #333;
+      text-decoration: none;
+      padding: 8px 16px;
+      margin: 0 4px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      background-color: #e8f4f8;
+      color: #0066cc;
+    }
+    
+    .navbar a.active {
+      background-color: #0066cc;
+      color: white;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+    body {
+      padding-top: 60px;
+    }
+    
+    @media (max-width: 768px) {
+      .navbar a {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin: 2px;
+      }
+      body {
+        padding-top: 80px;
+      }
+    }
+  </style>
+  
+  <!-- Active Section Highlighting Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('[id]');
+      const navLinks = document.querySelectorAll('.navbar a');
+      
+      function setActiveLink() {
+        let currentSection = '';
+        const scrollPosition = window.scrollY + 150; // Offset for navbar height
+        
+        // Convert sections to array and sort by position
+        const sectionArray = Array.from(sections).filter(section => {
+          // Only consider sections that have navigation links
+          return section.id === 'about' || section.id === 'updates' || 
+                 section.id === 'experience' || section.id === 'research' || 
+                 section.id === 'patents' || section.id === 'recognition';
+        }).sort((a, b) => a.offsetTop - b.offsetTop);
+        
+        // Find the current section
+        for (let i = 0; i < sectionArray.length; i++) {
+          const section = sectionArray[i];
+          const sectionTop = section.offsetTop - 100; // Small offset
+          const nextSection = sectionArray[i + 1];
+          const sectionBottom = nextSection ? nextSection.offsetTop : document.body.scrollHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.getAttribute('id');
+            break;
+          }
+        }
+        
+        // If we're at the very top, default to first section
+        if (!currentSection && scrollPosition < 200) {
+          currentSection = 'about';
+        }
+        
+        // Update active state
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSection) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', setActiveLink);
+      setActiveLink(); // Set initial active state
+    });
+  </script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4HH3XJ50W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-E4HH3XJ50W', {
+      'anonymize_ip': false,  // Set to true if you want to anonymize IP addresses
+      'allow_google_signals': true,  // Enables Demographics and Interests reports
+      'allow_ad_personalization_signals': false  // Disable ad personalization
+    });
+  </script>
 </head>
 
 <body>
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#about">Ishan Dave</a>
+      <a href="#updates">Updates</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Publications</a>
+      <a href="#patents">Patents</a>
+      <a href="#recognition">Recognition</a>
+    </div>
+  </nav>
+
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <table id="about" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
             <td style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:center">
                 <name>Ishan Dave</name>
               </p>
               <p style="font-size:15px">I am a full-time Applied Scientist at Adobe Firefly working on image and video diffusion models. I finished my Ph.D. in in 2024, from the Center for Research in Computer Vision (CRCV), University of Central Florida (UCF), advised by <a href="https://www.crcv.ucf.edu/person/mubarak-shah/" style="font-size:15px">Prof. Mubarak Shah</a>. My PhD dissertation was about Video Understanding and Self-Supervised Learning.
+			
+				<!-- Before that I worked as fulltime research assistant at RBCCPS of Indian Institute of Science, Bangalore, India and Indian Institute of Technology, Indore. My undergrad was from National Institute of Technology, Surat, India. -->
 
 			
               </p>
@@ -42,13 +186,18 @@
           </tr>
         </tbody></table>
 
-	<table
+	<table id="updates"
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
 <!--                   <h2>Updates <strong><font color="red">Looking for fulltime jobs!</font></strong> </h2> -->
 		  <h2>Updates</h2>
+		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'25:</span> My led work "Generative Upscaler" is shipped as the default upscaler in the Photoshop<br>
+		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Sep'25:</span> A paper "Finegrained Video Retrieval" accepted at <strong>NeurIPS 2025</strong><br>
+		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'25:</span> A paper "GT-Loc" accepted at <strong>ICCV 2025</strong>: <font color="red">Oral presentation! (Top 0.5% papers)</font><br>
+		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Apr'25:</span> A paper "ALBAR" accepted at <strong>ICLR 2025</strong><br>
+
 		  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jan'25:</span> Started full-time at Adobe Firefly, Seattle, WA <br>
 			  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'24:</span> Successfully defended my Ph.D dissertation! <br>
                     	  <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Aug'24:</span> SPAct Patent Approved! my first patent as the primary inventor 💥<br>
@@ -73,7 +222,7 @@
             </tbody>
           </table>
 	
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+        <table id="experience" width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
           <tr>
             <td>
               <heading>Work Experience</heading>
@@ -165,10 +314,10 @@
 
          
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <table id="research" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
+              <heading>Publications</heading>
               <p>
                 I have a broad interest in computer vision and machine learning. My primary research focuses on <strong>video understanding</strong>: self/semi supervised learning and action recognition.  
 <!-- 		      My current research mainly focuses on video representation learning with limited labels (self/semi-supervised learning), action recognition, and privacy preservation in video understanding tasks.  -->
@@ -194,9 +343,9 @@
 		</a>
 		<br>
 		<strong>Ishan Rajendrakumar Dave</strong>, 
-		Fabian Caba, 
-		Mubarak Shah, 
-		Simon Jenni.
+		<a href="https://fabiancaba.com/">Fabian Caba</a>, 
+		<a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>, 
+		<a href="https://sjenni.github.io/">Simon Jenni</a>.
 		<br>
 		<em>The 18th European Conference on Computer Vision (<strong>ECCV</strong>) </em>, 2024
 		<br>
@@ -223,8 +372,8 @@
 		        </a>
 		        <br>
 		        <strong>Ishan Rajendrakumar Dave</strong>, 
-		        Mamshad Nayeem Rizve, 
-		        Mubarak Shah.
+		        <a href="https://nayeemrizve.github.io/">Mamshad Nayeem Rizve</a>, 
+		        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 		        <br>
 		        <em>The 18th European Conference on Computer Vision (<strong>ECCV</strong>) </em>, 2024
 		        <br>
@@ -250,9 +399,9 @@
         </a>
         <br>
         <strong>Ishan Rajendrakumar Dave</strong>, 
-	Tristan de Blegiers, 
-	Chen Chen,
-        Mubarak Shah.
+	<a href="https://github.com/tristandb8">Tristan de Blegiers</a>, 
+	<a href="https://www.crcv.ucf.edu/chenchen/">Chen Chen</a>,
+        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
         <br>
         <em>31st IEEE International Conference on Image Processing (<strong>ICIP</strong>) </em>, 2024
         <br>
@@ -283,8 +432,8 @@
         </a>
         <br>
         <strong>Ishan Rajendrakumar Dave</strong>, 
-        Simon Jenni,  
-        Mubarak Shah.
+        <a href="https://sjenni.github.io/">Simon Jenni</a>,  
+        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
         <br>
         <em>AAAI Conference on Artificial Intelligence, Main Technical Track (<strong>AAAI</strong>) </em>, 2024
         <br>
@@ -308,9 +457,9 @@
 		    <papertitle>TeD-SPAD: Temporal Distinctiveness for Self-supervised Privacy-preservation for Video Anomaly Detection</papertitle>
 		</a>
 		<br>
-		Joseph Fioresi, 
+		<a href="https://joefioresi718.github.io/">Joseph Fioresi</a>, 
 		<strong>Ishan Rajendrakumar Dave</strong>, 
-		Mubarak Shah.
+		<a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 		<br>
 		<em>Proceedings of the IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
 		<br>
@@ -333,10 +482,10 @@
 	            <papertitle>EventTransAct: A Video Transformer-based Framework for Event-camera Based Action Recognition</papertitle>
 	        </a>
 	        <br>
-	        Tristan de Blegiers*, 
+	        <a href="https://github.com/tristandb8">Tristan de Blegiers</a>*, 
 	        <strong>Ishan Rajendrakumar Dave*</strong>, 
 	        Adeel Yousaf, 
-	        Mubarak Shah.
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 		<br>
 		*= equal contribution
 	        <br>
@@ -364,9 +513,9 @@
         </a>
         <br>
         <strong>Ishan Rajendrakumar Dave</strong>, 
-        Mamshad Nayeem Rizve, 
-        Chen Chen, 
-        Mubarak Shah.
+        <a href="https://nayeemrizve.github.io/">Mamshad Nayeem Rizve</a>, 
+        <a href="https://www.crcv.ucf.edu/chenchen/">Chen Chen</a>, 
+        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
         <br>
         <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2023
         <br>
@@ -392,8 +541,8 @@
 	        <br>
 	        Tushar Sangam, 
 	        <strong>Ishan Rajendrakumar Dave</strong>,
-	        Waqas Sultani, 
-	        Mubarak Shah.
+	        <a href="https://waqassultani.github.io/">Waqas Sultani</a>, 
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 	        <br>
 	        <em>2023 IEEE International Conference on Robotics and Automation (<strong>ICRA</strong>)</em>, 2023
 	        <br>
@@ -419,8 +568,8 @@
 	        </a>
 	        <br>
 	        <strong>Ishan Rajendrakumar Dave</strong>, 
-	        Chen Chen, 
-	        Mubarak Shah.
+	        <a href="https://www.crcv.ucf.edu/chenchen/">Chen Chen</a>, 
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 	        <br>
 	        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2022
 	        <br>
@@ -458,13 +607,13 @@
 	        </a>
 	        <br>
 	        <strong>Ishan Dave</strong>,
-	        Rohit Gupta, 
-	        Mamshad Nayeem Rizve, 
-	        Mubarak Shah.
+	        <a href="https://www.rohitg.xyz/">Rohit Gupta</a>, 
+	        <a href="https://nayeemrizve.github.io/">Mamshad Nayeem Rizve</a>, 
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 	        <br>
 	        <em>Computer Vision and Image Understanding (<strong>CVIU</strong>)</em>, 2022
 	        <br>
-	       <em><strong><font color="red">(100+ citations, Among the top-10 most downloaded papers in CVIU)</font></strong></em>
+	       <em><strong><font color="red">(250+ citations, Among the top-10 most downloaded papers in CVIU)</font></strong></em>
                <br>
 	        <a href="https://arxiv.org/pdf/2101.07974.pdf">paper</a> &nbsp/&nbsp
 	        <a href="https://github.com/DAVEISHAN/TCLR">code</a>
@@ -488,10 +637,10 @@
 	        <br>
 	        <strong>Ishan Dave</strong>, 
 	        Zacchaeus Scheffer, 
-	        Akash Kumar, 
+	        <a href="https://akash2907.github.io/">Akash Kumar</a>, 
 	        Sarah Shiraz, 
-	        Yogesh Singh Rawat, 
-	        Mubarak Shah.
+	        <a href="https://www.crcv.ucf.edu/person/rawat/">Yogesh Singh Rawat</a>, 
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 	        <br>
 	        <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (<strong>WACV</strong>)</em>, 2022
 	        <br>
@@ -514,14 +663,14 @@ challenging nature of action classification problem in various aspects like hand
 	            <papertitle>Gabriella: An Online System for Real-Time Activity Detection in Untrimmed Security Videos</papertitle>
 	        </a>
 	        <br>
-	        Mamshad Nayeem Rizve, 
+	        <a href="https://nayeemrizve.github.io/">Mamshad Nayeem Rizve</a>, 
 	        Ugur Demir, 
-	        Praveen Tirupattur, 
+	        <a href="https://ptirupat.github.io/">Praveen Tirupattur</a>, 
 	        Aayush Jung Rana, 
 	        Kevin Duarte, 
 	        <strong>Ishan R Dave</strong>, 
-	        Yogesh S Rawat, 
-	        Mubarak Shah.
+	        <a href="https://www.crcv.ucf.edu/person/rawat/">Yogesh S Rawat</a>, 
+	        <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>.
 	        <br>
 	        <em>25th International Conference on Pattern Recognition (<strong>ICPR</strong>)</em>, 2021 <em><strong><font color="red">(Best Paper Award)</font></strong></em>
 	        <br>
@@ -533,43 +682,57 @@ challenging nature of action classification problem in various aspects like hand
 	    </td>
 	</tr>
 
-	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+	<table id="patents" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Patent</heading>
+              <heading>Patents</heading>
             </td>
           </tr>
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+	
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:top">
+		<div class="one">
+		    <img src='images/avr_eccv2024.png' width="180">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://patents.google.com/patent/US20250342699A1/en">
+		    <papertitle>Identifying and aligning video clips from large-scale video datasets System</papertitle>
+		</a>
+		<br>
+		<a href="https://sjenni.github.io/">Simon Jenni</a>, <strong>Ishan Rajendrakumar Dave</strong>, <a href="https://fabiancaba.com/">Fabian Caba</a>
+		<br>
+		<em> US Patent US20250342699A1. (Status: Filed) </em>, 2025
+	    </td>
+	</tr>
+
+		<!-- SPAct Patent -->
 
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
-	    <td style="padding:20px;width:25%;vertical-align:middle">
+	    <td style="padding:20px;width:25%;vertical-align:top">
 		<div class="one">
 		    <img src='images/spact_patent2023.jpg' width="180">
 		</div>
 	    </td>
-	    <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="LINK_TO_PAPER">
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://patentimages.storage.googleapis.com/58/6c/b0/8c47ac8fac2691/US12142053.pdf"">
 		    <papertitle>Self-Supervised Privacy Preservation Action Recognition System</papertitle>
 		</a>
 		<br>
-		<strong>Ishan Rajendrakumar Dave</strong>, 
-		Chen Chen,
-		Mubarak Shah, 	
+		<strong>Ishan Rajendrakumar Dave</strong>, <a href="https://www.crcv.ucf.edu/chenchen/">Chen Chen</a>, <a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>
 		<br>
-		<em> The University of Central Florida. Invention Track Code: 2023-019. (Status: Approved) </em>, 2023
-		<br>
-		<a href="https://ucf.flintbox.com/technologies/781d7a2d-1f89-41db-911c-5d4ecf26af20">Tech Sheet</a>
-		    
+		<em> US Patent US12142053B2. (Status: <strong>Granted</strong>) </em>, 2024
 	    </td>
 	</tr>
 
 
-	<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+	<table id="recognition" width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
           <tr>
             <td>
-              <heading>Awards / Recognitions</heading>
+              <heading>Recognition</heading>
             </td>
           </tr>
         </tbody></table>
