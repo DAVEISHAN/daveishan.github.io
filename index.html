@@ -101,6 +101,30 @@
       text-decoration: underline;
     }
     
+    /* Paper link buttons */
+    .paper-links {
+      margin-top: 8px;
+    }
+    
+    .paper-link-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      margin: 4px 6px 4px 0;
+      border: 2px solid #4285f4;
+      border-radius: 8px;
+      color: #4285f4;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+    
+    .paper-link-btn:hover {
+      background-color: #4285f4;
+      color: white;
+    }
+    
     /* Collapsible year dividers for updates */
     .year-divider {
       font-weight: 600;
@@ -302,7 +326,8 @@
 		  
 		  <div class="year-divider" id="year-header-2025" onclick="toggleYear('2025')">2025</div>
 		  <div class="year-updates" id="year-content-2025">
-		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'25:</span> My led work "Generative Upscaler" is shipped as the default upscaler in the Photoshop<br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Dec'25:</span> A <strong>First author work</strong> "CreativeVR" released: state-of-the-art video restoration model <br>
+		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Oct'25:</span> My led work "Generative Upscaler" is shipped as the default upscaler in the Photoshop 💥<br>
 		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Sep'25:</span> A paper "Finegrained Video Retrieval" accepted at <strong>NeurIPS 2025</strong><br>
 		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Jun'25:</span> A paper "GT-Loc" accepted at <strong>ICCV 2025</strong>: <font color="red">Oral presentation! (Top 0.5% papers)</font><br>
 		    <span style="font-family: 'Courier New', Courier, monospace; color: #696969;">&nbsp;<i class="fa fa-share-alt" style="font-size:12px"></i> Apr'25:</span> A paper "ALBAR" accepted at <strong>ICLR 2025</strong><br>
@@ -365,7 +390,9 @@
                 <br> Adobe Inc., Seattle, Washington, USA. Jan 2025 - Present
                 <p></p>
                 <ul style="margin: 0; padding-left: 20px; line-height: 1.2;">
-		    <li>Working on image and video diffusion models for Adobe Firefly.</li>
+		    <li>Working on image and video diffusion models across open research and in-house for Adobe Firefly.</li>
+		    <li><strong>Initiated and led</strong> the <em>Generative Image Upscaler</em> project end-to-end: from proposing the idea and developing the research prototype to training the in-house production model and driving performance improvements beyond competitive systems. Generative Upscaler shipped in general-release of <em><a href="https://helpx.adobe.com/photoshop/desktop/repair-retouch/clean-restore-images/enhance-image-quality-with-generative-upscale.html" target="_blank">Photoshop</a></em> as the <strong>default</strong> upsampling solution and a core component of Adobe's flagship <em><a href="https://business.adobe.com/products/firefly-business/custom-models.html" target="_blank">Firefly Custom Models</a></em> ecosystem.</li>
+			<li> <strong></strong>Creative Video Restoration:</strong> Developed a state-of-the-art video restoration model for AI-generated and real videos with severe structural and temporal artifacts.</li>
 		</ul>	      
               </td>
             </tr>
@@ -455,6 +482,147 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+	<!-- ArXiv 2025 - CreativeVR -->
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()" bgcolor="#ffffd0">
+	    <td style="padding:20px;width:25%;vertical-align:top;text-align:center">
+		<div class="one">
+		    <img src='images/creativevr_logo.jpg' width="126">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://arxiv.org/abs/2512.12060">
+		    <papertitle>CreativeVR: Diffusion-Prior-Guided Approach for Structure and Motion Restoration in Generative and Real Videos</papertitle>
+		</a>
+		<br>
+		<strong>Ishan Rajendrakumar Dave*</strong>,
+		<a href="https://tejaspanambur.github.io/">Tejas Panambur*</a>,
+		<a href="https://chongjiange.github.io/">Chongjian Ge</a>,
+		<a href="https://www.linkedin.com/in/meyumer/">Ersin Yumer</a>,
+		<a href="https://sites.google.com/view/xuebai/home">Xue Bai</a>
+		<br>
+		<em>ArXiv Preprint</em>, 2025
+		<br>
+		*= equal contribution
+		<br>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/pdf/2512.12060" class="paper-link-btn">PDF</a>
+		  <a href="https://daveishan.github.io/creativevr-webpage/" class="paper-link-btn">Website</a>
+		  <a class="toggle-description" id="toggle-desc-creativevr" onclick="toggleDescription('desc-creativevr')">[show abstract]</a>
+		</div>
+		<div id="desc-creativevr" class="paper-description">
+		<p>
+			Modern text-to-video (T2V) diffusion models can synthesize visually compelling clips, yet they remain brittle at fine-scale structure: even state-of-the-art generators often produce distorted faces and hands, warped backgrounds, and temporally inconsistent motion. Such severe structural artifacts also appear in very low-quality real-world videos. Classical video restoration and super-resolution (VR/VSR) methods, in contrast, are tuned for synthetic degradations such as blur and downsampling and tend to stabilize these artifacts rather than repair them, while diffusion-prior restorers are usually trained on photometric noise and offer little control over the trade-off between perceptual quality and fidelity.
+			<br><br>
+			We introduce CreativeVR, a diffusion-prior-guided video restoration framework for AI-generated (AIGC) and real videos with severe structural and temporal artifacts. Our deep-adapter-based method exposes a single precision knob that controls how strongly the model follows the input, smoothly trading off between precise restoration on standard degradations and stronger structure- and motion-corrective behavior on challenging content. Our key novelty is a temporally coherent degradation module used during training, which applies carefully designed transformations that produce realistic structural failures.
+			<br><br>
+			To evaluate AIGC-artifact restoration, we propose the AIGC54 benchmark with FIQA, semantic and perceptual metrics, and multi-aspect scoring. CreativeVR achieves state-of-the-art results on videos with severe artifacts and performs competitively on standard video restoration benchmarks, while running at practical throughput (~13 FPS @ 720p on a single 80 GB A100).
+		</p>
+		</div>
+	     </td>
+	</tr>
+
+	<!-- NeurIPS 2025 - TF-CoVR -->
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:top">
+		<div class="one">
+		    <img src='images/tfcovr_neurips2025.png' width="180">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://arxiv.org/abs/2506.05274">
+		    <papertitle>From Play to Replay: Composed Video Retrieval for Temporally Fine-Grained Videos</papertitle>
+		</a>
+		<br>
+		<a href="https://animesh-007.github.io/">Animesh Gupta</a>,
+		Jay Parmar,
+		<strong>Ishan Rajendrakumar Dave</strong>, 
+		<a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>
+		<br>
+		<em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>) </em>, 2025
+		<br>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/abs/2506.05274" class="paper-link-btn">PDF</a>
+		  <a href="https://animesh-007.github.io/TF-CoVR-WEBSITE/" class="paper-link-btn">Website</a>
+		  <a href="https://github.com/UCF-CRCV/TF-CoVR" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc-tfcovr" onclick="toggleDescription('desc-tfcovr')">[show abstract]</a>
+		</div>
+		<div id="desc-tfcovr" class="paper-description">
+		<p>
+			Composed Video Retrieval (CoVR) retrieves a target video given a query video and a modification text describing the intended change. Existing CoVR benchmarks emphasize appearance shifts or coarse event changes and therefore do not test the ability to capture subtle, fast-paced temporal differences. We introduce TF-CoVR, the first large-scale benchmark dedicated to temporally fine-grained CoVR. TF-CoVR focuses on gymnastics and diving and provides 180K triplets drawn from FineGym and FineDiving.
+		</p>
+		</div>
+	     </td>
+	</tr>
+
+	<!-- ICCV 2025 - GT-Loc -->
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:top">
+		<div class="one">
+		    <img src='images/gtloc_iccv2025.png' width="180">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://arxiv.org/abs/2507.10473">
+		    <papertitle>GT-Loc: Unifying When and Where in Images Through a Joint Embedding Space</papertitle>
+		</a>
+		<br>
+		<a href="https://davidshatwell.com/">David Shatwell</a>,
+		<strong>Ishan Rajendrakumar Dave</strong>,
+		<a href="https://swetha5.github.io/">Sirnam Swetha</a>,
+		<a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>
+		<br>
+		<em>International Conference on Computer Vision (<strong>ICCV</strong>) </em>, 2025
+		<br>
+		<em><strong><font color="red">Oral presentation! (Top 0.6% papers)</font></strong></em>
+		<br>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/abs/2507.10473" class="paper-link-btn">PDF</a>
+		  <a href="https://davidshatwell.com/gtloc.github.io/" class="paper-link-btn">Website</a>
+		  <a href="https://iccv.thecvf.com/media/PosterPDFs/ICCV%202025/544.png?t=1759974999.7209623" class="paper-link-btn">Poster</a>
+		  <a class="toggle-description" id="toggle-desc-gtloc" onclick="toggleDescription('desc-gtloc')">[show abstract]</a>
+		</div>
+		<div id="desc-gtloc" class="paper-description">
+		<p>
+			Timestamp prediction aims to determine when an image was captured using only visual information, supporting applications such as metadata correction, retrieval, and digital forensics. To address the interdependence between time and location, we introduce GT-Loc, a novel retrieval-based method that jointly predicts the capture time (hour and month) and geo-location (GPS coordinates) of an image. Our approach employs separate encoders for images, time, and location, aligning their embeddings within a shared high-dimensional feature space.
+		</p>
+		</div>
+	     </td>
+	</tr>
+
+	<!-- ICLR 2025 - ALBAR -->
+	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
+	    <td style="padding:20px;width:25%;vertical-align:top">
+		<div class="one">
+		    <img src='images/albar_iclr2025.png' width="180">
+		</div>
+	    </td>
+	    <td style="padding:20px;width:75%;vertical-align:top">
+		<a href="https://arxiv.org/abs/2308.11072">
+		    <papertitle>ALBAR: Adversarial Learning approach to mitigate Biases in Action Recognition</papertitle>
+		</a>
+		<br>
+		<a href="https://joefioresi718.github.io/">Joseph Fioresi</a>,
+		<strong>Ishan Rajendrakumar Dave</strong>, 
+		<a href="https://www.crcv.ucf.edu/person/mubarak-shah/">Mubarak Shah</a>
+		<br>
+		<em>International Conference on Learning Representations (<strong>ICLR</strong>) </em>, 2025
+		<br>
+		<em><strong>Poster Presentation</strong></em>
+		<br>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/abs/2308.11072" class="paper-link-btn">PDF</a>
+		  <a href="https://joefioresi718.github.io/ALBAR_webpage/" class="paper-link-btn">Website</a>
+		  <a href="https://github.com/UCF-CRCV/ALBAR" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc-albar" onclick="toggleDescription('desc-albar')">[show abstract]</a>
+		</div>
+		<div id="desc-albar" class="paper-description">
+		<p>
+			We propose ALBAR, an adversarial learning approach to mitigate biases in action recognition. Our method addresses the challenge of spurious correlations between visual features and action labels that can lead to biased model predictions.
+		</p>
+		</div>
+	     </td>
+	</tr>
+
 	<tr onmouseout="mira_stop()" onmouseover="mira_start()">
 	    <td style="padding:20px;width:25%;vertical-align:top">
 		<div class="one">
@@ -475,8 +643,11 @@
 		<br>
 	       <em><strong><font color="red">Oral presentation! (Top 3% of accepted papers)</font></strong></em>
 		<br>
-		<a href="https://daveishan.github.io/avr-webpage/">project page</a>
-		/ <a class="toggle-description" id="toggle-desc1" onclick="toggleDescription('desc1')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://www.crcv.ucf.edu/wp-content/uploads/2018/11/avr_eccv24_dave.pdf" class="paper-link-btn">PDF</a>
+		  <a href="https://daveishan.github.io/avr-webpage/" class="paper-link-btn">Website</a>
+		  <a class="toggle-description" id="toggle-desc1" onclick="toggleDescription('desc1')">[show abstract]</a>
+		</div>
 		<div id="desc1" class="paper-description">
 		<p>
 			Temporal video alignment synchronizes key events like object interactions or action phase transitions in two videos, benefiting video editing, processing, and understanding tasks. Existing methods assume a given video pair, limiting applicability. We redefine this as a search problem, introducing Alignable Video Retrieval (AVR), which identifies and synchronizes well-alignable videos from a large collection. Key contributions include DRAQ, a video alignability indicator, and a generalizable frame-level video feature design.
@@ -502,8 +673,11 @@
 		        <br>
 		        <em>The 18th European Conference on Computer Vision (<strong>ECCV</strong>) </em>, 2024
 		        <br>
-			<a href="https://daveishan.github.io/finepsuedo-webpage/">project page</a>
-			/ <a class="toggle-description" id="toggle-desc2" onclick="toggleDescription('desc2')">[show abstract]</a>
+			<div class="paper-links">
+			  <a href="https://www.crcv.ucf.edu/wp-content/uploads/2018/11/finepsuedo_eccv24_dave.pdf" class="paper-link-btn">PDF</a>
+			  <a href="https://daveishan.github.io/finepsuedo-webpage/" class="paper-link-btn">Website</a>
+			  <a class="toggle-description" id="toggle-desc2" onclick="toggleDescription('desc2')">[show abstract]</a>
+			</div>
 			<div id="desc2" class="paper-description">
 			<p>
 				We introduce Alignability-Verification-based Metric learning for semi-supervised fine-grained action recognition. Using dynamic time warping (DTW) for action-phase-aware comparison, our learnable alignability score refines pseudo-labels of the video encoder. Our framework, FinePseudo, outperforms prior methods on fine-grained action recognition datasets. Additionally, it demonstrates robustness in handling novel unlabeled classes in open-world setups.
@@ -534,8 +708,12 @@
         <br>
         <em><strong><font color="red">Oral presentation! </font></strong></em>
 	<br>
-	<a href="https://daveishan.github.io/codamal-webpage/">project page</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/CodaMal">code</a>
-	/ <a class="toggle-description" id="toggle-desc3" onclick="toggleDescription('desc3')">[show abstract]</a>
+	<div class="paper-links">
+	  <a href="https://arxiv.org/pdf/2312.13008.pdf" class="paper-link-btn">PDF</a>
+	  <a href="https://daveishan.github.io/codamal-webpage/" class="paper-link-btn">Website</a>
+	  <a href="https://github.com/DAVEISHAN/CodaMal" class="paper-link-btn">Code</a>
+	  <a class="toggle-description" id="toggle-desc3" onclick="toggleDescription('desc3')">[show abstract]</a>
+	</div>
 	<div id="desc3" class="paper-description">
 	<p>
 		We propose a Domain Adaptive Contrastive objective to bridge the gap between High and Low Cost Microscopes. On the publicly available large-scale M5 dataset, our proposed method shows a significant improvement of 16% over the state-of-the-art methods in terms of the mean average precision metric (mAP), provides a 21× speed-up during inference, and requires only half as many learnable parameters as the prior methods.
@@ -564,8 +742,11 @@
         <br>
         <em>AAAI Conference on Artificial Intelligence, Main Technical Track (<strong>AAAI</strong>) </em>, 2024
         <br>
-	<a href="https://daveishan.github.io/nms-webpage/">project page</a>
-	/ <a class="toggle-description" id="toggle-desc4" onclick="toggleDescription('desc4')">[show abstract]</a>
+	<div class="paper-links">
+	  <a href="https://arxiv.org/pdf/2312.13008.pdf" class="paper-link-btn">PDF</a>
+	  <a href="https://daveishan.github.io/nms-webpage/" class="paper-link-btn">Website</a>
+	  <a class="toggle-description" id="toggle-desc4" onclick="toggleDescription('desc4')">[show abstract]</a>
+	</div>
 	<div id="desc4" class="paper-description">
 	<p>
 		We demonstrate experimentally that our more challenging frame-level task formulations and the removal of shortcuts drastically improve the quality of features learned through temporal self-supervision. Our extensive experiments show state-of-the-art performance across 10 video understanding datasets, illustrating the generalization ability and robustness of our learned video representations.
@@ -592,8 +773,12 @@
 		<br>
 		<em>Proceedings of the IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
 		<br>
-		<a href="https://arxiv.org/pdf/2308.11072.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/UCF-CRCV/TeD-SPAD">code</a> &nbsp/&nbsp <a href="https://joefioresi718.github.io/TeD-SPAD_webpage/">project page</a>
-		/ <a class="toggle-description" id="toggle-desc5" onclick="toggleDescription('desc5')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/pdf/2308.11072.pdf" class="paper-link-btn">PDF</a>
+		  <a href="https://joefioresi718.github.io/TeD-SPAD_webpage/" class="paper-link-btn">Website</a>
+		  <a href="https://github.com/UCF-CRCV/TeD-SPAD" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc5" onclick="toggleDescription('desc5')">[show abstract]</a>
+		</div>
 		<div id="desc5" class="paper-description">
 		<p>
 		    We propose TeD-SPAD, a privacy-aware video anomaly detection framework that destroys visual private information in a self-supervised manner. In particular, we propose the use of a temporally-distinct triplet loss to promote temporally discriminative features, which complements current weakly-supervised VAD methods.
@@ -622,8 +807,10 @@
 	        <br>
 	        <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (<strong>IROS</strong>)</em>, 2023
 	        <br>
-	        <a href="LINK_TO_PAPER">paper</a> &nbsp/&nbsp <a href="https://github.com/tristandb8/EventTransAct">code</a> &nbsp/&nbsp <a href="https://joefioresi718.github.io/TeD-SPAD_webpage/">project page</a>
-		/ <a class="toggle-description" id="toggle-desc6" onclick="toggleDescription('desc6')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://github.com/tristandb8/EventTransAct" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc6" onclick="toggleDescription('desc6')">[show abstract]</a>
+		</div>
 		<div id="desc6" class="paper-description">
 		<p>
 		   We propose a video transformer-based framework for event-camera based action recognition, which leverages event-contrastive loss and augmentations to adapt the network to event data. Our method achieved state-of-the-art results on N-EPIC Kitchens dataset and competitive results on the standard DVS Gesture recognition dataset, while requiring less computation time compared to competitive prior approaches. 
@@ -652,8 +839,12 @@
         <br>
         <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2023
         <br>
-        <a href="https://arxiv.org/pdf/2303.16268.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/TimeBalance">code</a> &nbsp/&nbsp <a href="https://daveishan.github.io/timebalance_webpage/">project page</a>
-	/ <a class="toggle-description" id="toggle-desc7" onclick="toggleDescription('desc7')">[show abstract]</a>
+	<div class="paper-links">
+	  <a href="https://arxiv.org/pdf/2303.16268.pdf" class="paper-link-btn">PDF</a>
+	  <a href="https://daveishan.github.io/timebalance_webpage/" class="paper-link-btn">Website</a>
+	  <a href="https://github.com/DAVEISHAN/TimeBalance" class="paper-link-btn">Code</a>
+	  <a class="toggle-description" id="toggle-desc7" onclick="toggleDescription('desc7')">[show abstract]</a>
+	</div>
 	<div id="desc7" class="paper-description">
 	<p>
 		We propose a student-teacher semi-supervised learning framework, where we distill knowledge from a temporally-invariant and temporally-distinctive teacher. Depending on the nature of the unlabeled video, we dynamically combine the knowledge of these two teachers based on a novel temporal similarity-based reweighting scheme. State-of-the-art results on Kinetics400, UCF101, HMDB51.
@@ -680,8 +871,12 @@
 	        <br>
 	        <em>2023 IEEE International Conference on Robotics and Automation (<strong>ICRA</strong>)</em>, 2023
 	        <br>
-	        <a href="https://arxiv.org/pdf/2210.08423.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/tusharsangam/TransVisDrone">code</a> &nbsp/&nbsp <a href="https://tusharsangam.github.io/TransVisDrone-project-page/">project page</a>
-		/ <a class="toggle-description" id="toggle-desc8" onclick="toggleDescription('desc8')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/pdf/2210.08423.pdf" class="paper-link-btn">PDF</a>
+		  <a href="https://tusharsangam.github.io/TransVisDrone-project-page/" class="paper-link-btn">Website</a>
+		  <a href="https://github.com/tusharsangam/TransVisDrone" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc8" onclick="toggleDescription('desc8')">[show abstract]</a>
+		</div>
 		<div id="desc8" class="paper-description">
 		<p>
 		    We propose a simple yet effective framework, TransVisDrone, that provides an end-to-end solution with higher computational efficiency. We utilize CSPDarkNet-53 network to learn object-related spatial features and VideoSwin model to improve drone detection in challenging scenarios by learning spatio-temporal dependencies of drone motion.
@@ -709,8 +904,11 @@
 	        <br>
 	        <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2022
 	        <br>
-	        <a href="https://arxiv.org/pdf/2203.15205.pdf">paper</a> &nbsp/&nbsp <a href="https://github.com/DAVEISHAN/SPAct">code</a>
-		/ <a class="toggle-description" id="toggle-desc9" onclick="toggleDescription('desc9')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/pdf/2203.15205.pdf" class="paper-link-btn">PDF</a>
+		  <a href="https://github.com/DAVEISHAN/SPAct" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc9" onclick="toggleDescription('desc9')">[show abstract]</a>
+		</div>
 		<div id="desc9" class="paper-description">
 		<p>
 		    For the first time, we present a novel training framework that removes privacy information from input video in a self-supervised manner without requiring privacy labels. We train our framework using a minimax optimization strategy to minimize the action recognition cost function and maximize the privacy cost function through a contrastive self-supervised loss. 
@@ -753,9 +951,11 @@
 	        <br>
 	       <em><strong><font color="red">(250+ citations, Among the top-10 most downloaded papers in CVIU)</font></strong></em>
                <br>
-	        <a href="https://arxiv.org/pdf/2101.07974.pdf">paper</a> &nbsp/&nbsp
-	        <a href="https://github.com/DAVEISHAN/TCLR">code</a>
-		/ <a class="toggle-description" id="toggle-desc10" onclick="toggleDescription('desc10')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/pdf/2101.07974.pdf" class="paper-link-btn">PDF</a>
+		  <a href="https://github.com/DAVEISHAN/TCLR" class="paper-link-btn">Code</a>
+		  <a class="toggle-description" id="toggle-desc10" onclick="toggleDescription('desc10')">[show abstract]</a>
+		</div>
 		<div id="desc10" class="paper-description">
 	        <p>
 	            We propose a new temporal contrastive learning framework for self-supervised video representation learning, consisting of two novel losses that aim to increase the temporal diversity of learned features. The framework achieves state-of-the-art results on various downstream video understanding tasks, including significant improvement in fine-grained action classification for visually similar classes.
@@ -784,8 +984,10 @@
 	        <br>
 	        <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (<strong>WACV</strong>)</em>, 2022
 	        <br>
-	        <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf">paper</a>
-		/ <a class="toggle-description" id="toggle-desc11" onclick="toggleDescription('desc11')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://openaccess.thecvf.com/content/WACV2022W/HADCV/papers/Dave_GabriellaV2_Towards_Better_Generalization_in_Surveillance_Videos_for_Action_Detection_WACVW_2022_paper.pdf" class="paper-link-btn">PDF</a>
+		  <a class="toggle-description" id="toggle-desc11" onclick="toggleDescription('desc11')">[show abstract]</a>
+		</div>
 		<div id="desc11" class="paper-description">
 	        <p>
 	            We propose a realtime, online, action detection system which can generalize robustly on any unknown facility surveillance videos. We tackle the
@@ -816,8 +1018,10 @@ challenging nature of action classification problem in various aspects like hand
 	        <br>
 	        <em>25th International Conference on Pattern Recognition (<strong>ICPR</strong>)</em>, 2021 <em><strong><font color="red">(Best Paper Award)</font></strong></em>
 	        <br>
-	        <a href="https://arxiv.org/abs/2004.11475">paper</a>
-		/ <a class="toggle-description" id="toggle-desc12" onclick="toggleDescription('desc12')">[show abstract]</a>
+		<div class="paper-links">
+		  <a href="https://arxiv.org/abs/2004.11475" class="paper-link-btn">PDF</a>
+		  <a class="toggle-description" id="toggle-desc12" onclick="toggleDescription('desc12')">[show abstract]</a>
+		</div>
 		<div id="desc12" class="paper-description">
 	        <p>
 	            Gabriella consists of three stages: tubelet extraction, activity classification, and online tubelet merging. Gabriella utilizes a localization network for tubelet extraction, with a novel Patch-Dice loss to handle variations in actor size, and a Tubelet-Merge Action-Split (TMAS) algorithm to detect activities efficiently and robustly.
